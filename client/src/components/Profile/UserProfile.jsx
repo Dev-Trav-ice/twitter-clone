@@ -16,7 +16,7 @@ import { FaLocationDot } from "react-icons/fa6";
 function UserProfile() {
   const [user, setUser] = useState(null);
   const [toggleEditProfile, setToggleEditProfile] = useState(false);
-  const [followersCount, setFollowerCount] = useState(user?.followers?.length);
+  const [followersCount, setFollowerCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const { username } = useParams();
   const { loggedUser } = useSelector((state) => state.user);
@@ -26,6 +26,7 @@ function UserProfile() {
     try {
       const res = await axios.get(`/api/user/${username}`);
       setUser(res.data);
+      setFollowerCount(res.data.followers?.length || 0);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -37,7 +38,7 @@ function UserProfile() {
     getUserProfile(username);
   }, [username]);
 
-  if (loading) {
+  if (loading || !user) {
     return <Loading />;
   }
 
@@ -110,8 +111,20 @@ function UserProfile() {
           {loggedUser.username === user?.username ? loggedUser.bio : user?.bio}
         </h2>
         <div className="flex items-center gap-1 mb-3">
-          {user?.website?.length > 0 && (
-            <BiWorld className="text-gray-400 text-sm md:text-lg" />
+          {user?.website && (
+            <div className="flex items-center gap-1 mb-3">
+              <BiWorld className="text-gray-400 text-sm md:text-lg" />
+              <a
+                className="text-xs md:text-sm underline text-blue-500"
+                href={user.website}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {loggedUser.username === user?.username
+                  ? loggedUser.website
+                  : user.website}
+              </a>
+            </div>
           )}
           <a
             className="text-xs md:text-sm underline text-blue-500"
@@ -155,7 +168,7 @@ function UserProfile() {
       <div className="px-6 py-3 border-y border-[#2f2f30]">
         <UserPosts
           posts={user?.posts}
-          onDelete={() => getUserProfile(loggedUser?.username)}
+          onDelete={() => getUserProfile(loggedUser.username)}
           user={user}
           loggedUser={loggedUser}
         />
