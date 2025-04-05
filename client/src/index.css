@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import "tailwindcss";
+
+html {
+  font-family: "Inter", "Helvetica Neue", "Arial", sans-serif;
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+}
+
+body {
+  max-width: 1100px;
+  margin: auto;
+  scroll-behavior: smooth;
+}
+.twitter-border {
+  border-right: 0.2px solid #2f2f30;
+  border-bottom: 0.2px solid #2f2f30;
+  border-left: 0.2px solid #2f2f30;
+}
+
+.scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.scroller {
+  scrollbar-width: 4px;
+  scrollbar-color: #2f2f30;
+}
