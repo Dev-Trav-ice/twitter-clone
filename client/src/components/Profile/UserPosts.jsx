@@ -4,7 +4,7 @@ import PostButtons from "../Shared/PostButtons";
 import Delete from "../Shared/Delete";
 import axios from "axios";
 
-function UserPosts({ posts, user, loggedUser }) {
+function UserPosts({ posts, user, loggedUser, onDelete }) {
   const handleDeletePost = async (e, postId) => {
     e.preventDefault();
     const result = confirm("Are you sure you want to delete post?");
@@ -13,14 +13,12 @@ function UserPosts({ posts, user, loggedUser }) {
 
     try {
       const res = await axios.delete(`/api/post/${postId}`);
-
       if (res.data) {
-        window.location.reload();
+        onDelete();
       }
     } catch (error) {
       console.log(error);
     }
-    console.log(postId);
   };
 
   return (

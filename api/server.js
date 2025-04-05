@@ -1,4 +1,5 @@
 import express from "express";
+import path from "path";
 import cors from "cors";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
@@ -15,6 +16,7 @@ import notificationRoutes from "./routes/notification.js";
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5003;
+const __dirname = path.resolve();
 
 //middlewares
 app.use(express.json());
@@ -33,5 +35,11 @@ app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/notification", notificationRoutes);
+
+app.use(express.static(path.join(__dirname, "/client/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "/client", "/dist", "/index.html"));
+});
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));

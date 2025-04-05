@@ -153,7 +153,12 @@ function UserProfile() {
         </span>
       </div>
       <div className="px-6 py-3 border-y border-[#2f2f30]">
-        <UserPosts posts={user?.posts} user={user} loggedUser={loggedUser} />
+        <UserPosts
+          posts={user?.posts}
+          onDelete={() => getUserProfile(loggedUser?.username)}
+          user={user}
+          loggedUser={loggedUser}
+        />
       </div>
     </div>
   );
