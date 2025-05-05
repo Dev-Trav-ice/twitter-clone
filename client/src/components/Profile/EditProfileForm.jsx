@@ -29,9 +29,13 @@ function EditProfileForm({ toggleEditProfile, setToggleEditProfile }) {
     coverImage && formData.append("cover", coverImage);
     if (!profileImage && !coverImage) return null;
     else {
-      const res = await axios.post("/api/upload/edit-profile", formData, {
-        headers: { "Content-Type": "multipart-form-data" },
-      });
+      const res = await axios.post(
+        "https://twitter-clone-xntj.onrender.com/api/upload/edit-profile",
+        formData,
+        {
+          headers: { "Content-Type": "multipart-form-data" },
+        }
+      );
       return res.data;
     }
   };
@@ -43,7 +47,7 @@ function EditProfileForm({ toggleEditProfile, setToggleEditProfile }) {
     const { profile, cover } = profileData ?? {};
     try {
       const res = await axios.put(
-        `/api/user/${loggedUser?._id}`,
+        `https://twitter-clone-xntj.onrender.com/api/user/${loggedUser?._id}`,
         {
           ...inputs,
           profilePicture: profile?.url || loggedUser.profilePicture,

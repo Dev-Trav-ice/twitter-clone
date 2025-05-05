@@ -16,7 +16,9 @@ function Navbar() {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/api/auth/signout");
+      await axios.post(
+        "https://twitter-clone-xntj.onrender.com/api/auth/signout"
+      );
       dispatch(signOut());
       navigate("/signin");
     } catch (error) {

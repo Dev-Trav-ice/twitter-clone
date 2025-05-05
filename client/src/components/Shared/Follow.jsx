@@ -22,7 +22,9 @@ function Follow({ user, setFollowersCount }) {
       } else {
         setFollowersCount((prev) => Math.max(prev - 1, 0));
       }
-      const res = await axios.put(`/api/user/follow-unfollow/${user?._id}`);
+      const res = await axios.put(
+        `https://twitter-clone-xntj.onrender.com/api/user/follow-unfollow/${user?._id}`
+      );
       if (res.data) {
         window.location.reload();
       }

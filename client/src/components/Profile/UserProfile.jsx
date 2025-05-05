@@ -26,7 +26,9 @@ function UserProfile() {
   const getUserProfile = async (username) => {
     setLoading(true);
     try {
-      const res = await axios.get(`/api/user/${username}`);
+      const res = await axios.get(
+        `https://twitter-clone-xntj.onrender.com/api/user/${username}`
+      );
       setUser(res.data);
       setFollowerCount(res.data.followers?.length || 0);
     } catch (error) {

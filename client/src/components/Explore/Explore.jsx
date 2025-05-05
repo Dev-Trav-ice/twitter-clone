@@ -17,9 +17,12 @@ function Explore() {
   const getExplorePosts = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("/api/post/explore", {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        "https://twitter-clone-xntj.onrender.com/api/post/explore",
+        {
+          withCredentials: true,
+        }
+      );
       setExplorePosts(res.data);
       setLoading(false);
     } catch (error) {

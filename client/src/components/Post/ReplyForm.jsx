@@ -12,7 +12,10 @@ function Reply({ postId, onPost }) {
     setLoading(true);
     e.preventDefault();
     try {
-      await axios.post(`/api/post/${postId}`, { comment });
+      await axios.post(
+        `https://twitter-clone-xntj.onrender.com/api/post/${postId}`,
+        { comment }
+      );
       setLoading(false);
       if (onPost) {
         onPost();

@@ -28,9 +28,13 @@ function SigninPage() {
     e.preventDefault();
     dispatch(signInStart());
     try {
-      const res = await axios.post(`/api/auth/signin`, inputs, {
-        withCredentials: true,
-      });
+      const res = await axios.post(
+        `https://twitter-clone-xntj.onrender.com/api/auth/signin`,
+        inputs,
+        {
+          withCredentials: true,
+        }
+      );
       dispatch(signInSuccess(res.data.others));
       toast.success(res.data.message);
       navigate(from || "/");

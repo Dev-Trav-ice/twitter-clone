@@ -18,9 +18,12 @@ function Notifications() {
   const getNotifications = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("/api/notification", {
-        withCredentials: true,
-      });
+      const res = await axios.get(
+        "https://twitter-clone-xntj.onrender.com/api/notification",
+        {
+          withCredentials: true,
+        }
+      );
       setNotifications(res.data);
       setLoading(false);
     } catch (error) {

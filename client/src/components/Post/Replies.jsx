@@ -12,7 +12,9 @@ function Replies({ comments, onDelete }) {
   const deleteReply = async (e, commentId) => {
     e.preventDefault();
     try {
-      const res = await axios.delete(`/api/post/delete/${commentId}`);
+      const res = await axios.delete(
+        `https://twitter-clone-xntj.onrender.com/api/post/delete/${commentId}`
+      );
       console.log(res.data);
       if (onDelete) {
         onDelete();

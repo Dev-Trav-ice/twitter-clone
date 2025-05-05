@@ -12,7 +12,9 @@ function Post() {
   const getPost = async (id) => {
     setLoading(true);
     try {
-      const res = await axios.get(`/api/post/${id}`);
+      const res = await axios.get(
+        `https://twitter-clone-xntj.onrender.com/api/post/${id}`
+      );
       setPost(res.data);
       setLoading(false);
     } catch (error) {

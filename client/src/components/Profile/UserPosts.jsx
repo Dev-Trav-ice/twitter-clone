@@ -12,7 +12,9 @@ function UserPosts({ posts, user, loggedUser, onDelete }) {
     if (!result) return;
 
     try {
-      const res = await axios.delete(`/api/post/${postId}`);
+      const res = await axios.delete(
+        `https://twitter-clone-xntj.onrender.com/api/post/${postId}`
+      );
       if (res.data) {
         onDelete();
       }

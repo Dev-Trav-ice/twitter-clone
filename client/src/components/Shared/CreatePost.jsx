@@ -21,9 +21,13 @@ function CreatePost({ onPost }) {
       if (!file) return;
       const formData = new FormData();
       formData.append("file", file);
-      const res = await axios.post("/api/upload/", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
+      const res = await axios.post(
+        "https://twitter-clone-xntj.onrender.com/api/upload/",
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
       return res.data;
     } catch (error) {
       console.log(error);

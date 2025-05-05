@@ -7,10 +7,10 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     historyApiFallback: true,
-    proxy: {
-      "/api": {
-        target: "https://twitter-clone-xntj.onrender.com",
-      },
-    },
+    // proxy: {
+    //   "/api": {
+    //     target: "http",
+    //   },
+    // },
   },
 });
