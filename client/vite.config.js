@@ -9,7 +9,7 @@ export default defineConfig({
     historyApiFallback: true,
     proxy: {
       "/api": {
-        target: "http://localhost:4000",
+        target: "https://twitter-clone-xntj.onrender.com",
       },
     },
   },
