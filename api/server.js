@@ -22,10 +22,7 @@ const __dirname = path.resolve();
 app.use(express.json());
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://twitter-clone-xntj.onrender.com",
-    ],
+    origin: ["http://localhost:5173" || process.env.FRONTEND_URL],
     credentials: true,
   })
 );
