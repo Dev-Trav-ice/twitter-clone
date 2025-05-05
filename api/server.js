@@ -18,11 +18,12 @@ const app = express();
 const PORT = process.env.PORT || 5003;
 const __dirname = path.resolve();
 
+const allowedOrigin = process.env.CLIENT_URL || "https://localhost:5173";
 //middlewares
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:5173" || process.env.FRONTEND_URL],
+    origin: allowedOrigin,
     credentials: true,
   })
 );
