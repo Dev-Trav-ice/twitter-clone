@@ -22,7 +22,7 @@ const __dirname = path.resolve();
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5000",
+    origin: ["http://localhost:5000", process.env.FRONTEND_URL],
     credentials: true,
   })
 );
@@ -35,11 +35,5 @@ app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/notification", notificationRoutes);
-
-app.use(express.static(path.join(__dirname, "/client/dist")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "/client", "/dist", "/index.html"));
-});
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
